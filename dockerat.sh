@@ -1,7 +1,7 @@
 #!/bin/sh
 # 1) you need to give a filename to this script as an argument;
 # 2) you need to be root to run this test
-# 3) !!! IMPORTANT !!! in the end, script will remove all containers and images !!! IMPORTANT !!!
+# 3) !!! IMPORTANT !!! This script will remove all containers and images !!! IMPORTANT !!!
 echo "Docker testing on '$HOSTNAME'" > $1
 echo "" >> $1
 systemctl stop docker
