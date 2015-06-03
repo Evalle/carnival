@@ -1,13 +1,12 @@
 #!/bin/sh
-# v 0.1
+# v 0.03
 # =======
-# There are three important things:
+# There are two important things:
 # 1) you need to be a root to run this script;
-# 2) If you want to destroy all Docker images and containers after testing, please,   
-# 3) This script testing only base functionality of Docker on your system. 
-
-DONE="echo 'Done! Please check '$1' for results' "
-
+# 2) this script testing only base functionality of Docker on your system. 
+sleep 1
+echo "dockerat.sh is now testing Docker on your system, you can find all results in '$1' file. Please, be patient..."
+sleep 1 
 echo "Docker testing on '$HOSTNAME'" > $1
 echo "" >> $1
 systemctl stop docker
@@ -50,8 +49,12 @@ echo "" >> $1
 echo "$HOSTNAME:~ # docker info" >> $1
 docker info >> $1
 
-if [ $2 == 'destroy' ]; then
-    docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) &> \n
-fi
-
-$DONE
+echo "Do you wish to destory all Docker images and containers on your system? (Please choose  1 - for Yes, and 2 - for No)"
+select yn in "Yes" "No"; do
+    case $yn in 
+        Yes ) docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) > /dev/null; break;;
+        No  ) exit;;
+    esac
+done
+echo "" 
+echo "Done! Please check '$1' files for results "
