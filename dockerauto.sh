@@ -1,7 +1,13 @@
 #!/bin/sh
-# 1) you need to give a filename to this script as an argument;
-# 2) you need to be root to run this test
-# 3) !!! IMPORTANT !!! This script will remove all containers and images !!! IMPORTANT !!!
+# v 0.1
+# =======
+# There are three important things:
+# 1) you need to be a root to run this script;
+# 2) If you want to destroy all Docker images and containers after testing, please,   
+# 3) This script testing only base functionality of Docker on your system. 
+
+DONE="echo 'Done! Please check '$1' for results' "
+
 echo "Docker testing on '$HOSTNAME'" > $1
 echo "" >> $1
 systemctl stop docker
@@ -44,13 +50,8 @@ echo "" >> $1
 echo "$HOSTNAME:~ # docker info" >> $1
 docker info >> $1
 
-# uncomment lines below to stop and remove all containers for older version of Docker:
-# docker stop $(docker ps -a -q)
-# docker rm $(docker ps -a -q)
+if [ $2 == 'destroy' ]; then
+    docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) &> \n
+fi
 
-# For newer version of Docker we can do that in one command.
-# (comment line below if you have an older version of Docker)
-docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) &>
-
-echo "Done! Please check '$1' for results"
-
+$DONE
