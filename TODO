@@ -1,3 +1,3 @@
 1) fix docker rm -f output
-2) rewrite this script with BATS
+V rewrite this script with BATS - Done! See https://github.com/Evalle/dockeraut2
 
