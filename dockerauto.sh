@@ -4,12 +4,13 @@
 # There are two important things:
 # 1) you need to be a root to run this script;
 # 2) this script testing only base functionality of Docker on your system. 
-sleep 1
+
 echo "dockerat.sh is now testing Docker on your system, you can find all results in '$1' file. Please, be patient..."
 sleep 1 
 echo "Docker testing on '$HOSTNAME'" > $1
 echo "" >> $1
 systemctl stop docker
+
 sleep 2
 echo "" >> $1
 echo "$HOSTNAME:~ # systemctl status docker" >> $1
