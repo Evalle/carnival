@@ -1,9 +1,10 @@
 #!/bin/sh
 # v 0.03
 # =======
-# There are two important things:
-# 1) you need to be a root to run this script;
-# 2) this script testing only base functionality of Docker on your system. 
+# There are three important things:
+# 1) you need to be root to run this script;
+# 2) you need to gave filename (file where you can find your results) as an argument for this script;
+# 3) this script is useful only for basic Docker functionality testing on your system. 
 
 echo "dockerat.sh is now testing Docker on your system, you can find all results in '$1' file. Please, be patient..."
 sleep 1 
