@@ -21,7 +21,9 @@ function check {
 
 echo "dockerat.sh is now testing Docker on your system, you can find your results in 'results.txt' file. Please, be patient..."
 sleep 1 
-echo "Docker testing on '$HOSTNAME'" > results.txt
+
+echo "" >> results.txt
+echo "Docker testing on '$HOSTNAME' host" > results.txt
 echo "" >> results.txt
 systemctl stop docker
 check
@@ -90,12 +92,22 @@ echo "$HOSTNAME:~ # docker info" >> results.txt
 docker info >> results.txt
 check
 
+echo ""
+if [ $ERRORS -eq 0 ]; then
+        echo "All Tests are Passed, check your results in 'results.txt' file"
+    else
+        echo "One of the tests is FAILED, please check 'results.txt' for additional information"
+    fi
+
+echo "" 
+
 echo "Do you wish to destory all Docker images and containers on your system? (Please choose  1 - for Yes, and 2 - for No)"
 select yn in "Yes" "No"; do
     case $yn in 
-        Yes ) docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) &> /dev/null; break;;
+        Yes ) echo ""; echo "These containers will be deleted: "; echo ""; docker rm -f $(docker ps -a -q) && docker rmi $(docker images -q) &> /dev/null; break;;
         No  ) exit;;
     esac
 done
-echo "" 
-echo "Done! Please check 'results.txt' for results "
+
+
+
