@@ -1,13 +1,14 @@
 #!/bin/sh
 # v 0.03
 # =======
-# There are three important things:
+# There are two important things:
 # 1) you need to be root to run this script;
-# 2) you need to gave filename (file where you can find your results) as an argument for this script;
-# 3) this script is useful only for basic Docker functionality testing on your system. 
+# 2) this script is useful only for basic Docker functionality testing on your system. 
 
 ERRORS='0'
 
+
+# fucntion that checking status of your command
 function check {
     if [ $? -eq 0 ]; then
         echo "Test Passed"
