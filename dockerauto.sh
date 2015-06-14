@@ -9,7 +9,7 @@
 
 ERRORS='0'
 
-/# fucntion that checking status of your command
+# fucntion that checking status of your command
 function check {
     if [ $? -eq 0 ]; then
         echo "Test Passed"
