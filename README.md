@@ -1,5 +1,5 @@
 # docker_auto
 
-dockerauto.sh is a script for testing base functionality of Docker on your system
+dockerat.sh is a script for testing basic functionality of Docker on your system
 
 
