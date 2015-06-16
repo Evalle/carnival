@@ -1,5 +1,5 @@
 #!/bin/sh
-# v 0.07
+# v 0.09
 # =======
 # There are five important things:
 # 1) you need to put version of Docker that you testing as an argument to this script;
@@ -10,7 +10,6 @@
 
 ERRORS='0'
 LOG='log'
-VERSION='$1'
 
 # fucntion that checking status of your command
 function check {
