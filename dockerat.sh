@@ -9,9 +9,11 @@
 # 5) have a lot of fun!
 
 ERRORS='0'
+
+# you can change it and give specific name to it if you want to
 LOG='log'
 
-# fucntion that checking status of your command
+# function that checking status of your command
 function check {
     if [ $? -eq 0 ]; then
         echo "PASSED"
