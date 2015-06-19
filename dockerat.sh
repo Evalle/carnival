@@ -1,16 +1,16 @@
 #!/bin/sh
-# v 0.09
+# v 0.9
 # =======
-# There are five important things:
-# 1) you need to put version of Docker that you testing as an argument to this script;
-# 2) you need to have root privilegies to run this script;
-# 3) this script only testing basic Docker functionality on your system;
-# 4) you can find all your results in the log file;
-# 5) have a lot of fun!
+# There are four important things:
+# 1) you need to have root privilegies to run this script;
+# 2) this script only testing basic Docker functionality on your system;
+# 3) you can find all your results in the log file (see $LOG variable);
+# 4) have a lot of fun!
 
 ERRORS='0'
 
-# you can change it and give specific name to it if you want to
+# All your results in the $LOG you can change it and give specific name to it if you want to below:
+
 LOG='log'
 
 # function that checking status of your command
@@ -23,15 +23,15 @@ function check {
     fi
 }
 
-#function check_version {
-#    if [ $1 -eq `docker --version` ]; then
-#        echo "PASSED"
-#    else
-#        echo "FAILED"
-#         ERRORS=$[$ERRORS+1]     
-#    fi
-#}
-### fix this crap ^^^ 
+
+    if [ "$1" = `docker --version` ]; then
+        echo "PASSED"
+    else
+        echo "FAILED"
+         ERRORS=$[$ERRORS+1]     
+    fi
+}
+ 
 
 
 echo "dockerat.sh is now testing Docker on your system, you can find your results in '$LOG' file. Please, be patient..."
