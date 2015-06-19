@@ -7,10 +7,12 @@
 # 3) you can find all your results in the log file (see $LOG variable);
 # 4) have a lot of fun!
 
-ERRORS='0'
+ERRORS=0
+
+#docker version variable here:
+VOUTPUT="$(docker --version)"
 
 # All your results in the $LOG you can change it and give specific name to it if you want to below:
-
 LOG='log'
 
 # function that checking status of your command
@@ -23,16 +25,15 @@ function check {
     fi
 }
 
-
-    if [ "$1" = `docker --version` ]; then
+function check_version {
+    if [ "$1" == "{$VOUTPUT}" ]; then
         echo "PASSED"
     else
         echo "FAILED"
-         ERRORS=$[$ERRORS+1]     
+        ERRORS=$[$ERRORS+1]     
     fi
 }
  
-
 
 echo "dockerat.sh is now testing Docker on your system, you can find your results in '$LOG' file. Please, be patient..."
 
@@ -63,13 +64,12 @@ echo "" >> $LOG
 echo "$HOSTNAME:~ # docker --version" >> $LOG
 docker --version >> $LOG
 echo "test #4 Check Docker version..."
-check
+check_version
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # ip a s" >> $LOG
-# We probably need to use "ip a s | grep -i docker" here to find out that we have docker network interface >> TODO
 ip a s | grep -i docker >> $LOG
-echo "test #5 Check that we have docker netowrk interface on our system..."
+echo "test #5 Check that we have docker network interface on our system..."
 check 
 
 echo "" >> $LOG
