@@ -1,3 +1,2 @@
-1) fix docker rm -f output
-V rewrite this script with BATS - Done! See https://github.com/Evalle/dockeraut2
-
+1) fix issue with $VERSION variable
+2) fix docker rm -f output

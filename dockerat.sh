@@ -9,7 +9,7 @@
 
 ERRORS=0
 
-#docker version variable here:
+#docker version variable:
 VOUTPUT="$(docker --version)"
 
 # All your results in the $LOG you can change it and give specific name to it if you want to below:
@@ -26,7 +26,7 @@ function check {
 }
 
 function check_version {
-    if [ "$1" == "{$VOUTPUT}" ]; then
+    if [ "$1"== "{$VOUTPUT}" ]; then
         echo "PASSED"
     else
         echo "FAILED"
@@ -123,9 +123,9 @@ check
 
 echo ""
 if [ $ERRORS -eq 0 ]; then
-        echo "All Tests are PASSED, check your results in '$LOG' file"
+echo "All Tests are PASSED, check your results in '$LOG' file"
     else
-        echo "One of the tests is FAILED, please check '$LOG' for additional information"
+echo "One of the tests is FAILED, please check '$LOG' for additional information"
     fi
 
 echo "" 
