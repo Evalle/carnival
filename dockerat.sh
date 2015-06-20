@@ -3,7 +3,7 @@
 # =======
 # There are four important things:
 # 1) you need to have root privilegies to run this script;
-# 2) this script only testing basic Docker functionality on your system;
+# 2) this script is only testing basic Docker functionality on your system;
 # 3) you can find all your results in the log file (see $LOG variable);
 # 4) have a lot of fun!
 
@@ -26,7 +26,7 @@ function check {
 }
 
 function check_version {
-    if [ "$1"== "{$VOUTPUT}" ]; then
+    if [ "$1" == "{$VOUTPUT}" ]; then
         echo "PASSED"
     else
         echo "FAILED"
