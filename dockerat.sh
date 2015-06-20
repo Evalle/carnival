@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # v 0.9
 # =======
 # There are four important things:
@@ -16,7 +16,7 @@ VOUTPUT="$(docker --version)"
 LOG='log'
 
 # function that checking status of your command
-function check {
+check() {
     if [ $? -eq 0 ]; then
         echo "PASSED"
     else
@@ -25,7 +25,7 @@ function check {
     fi
 }
 
-function check_version {
+check_version() {
     if [ "$1" == "{$VOUTPUT}" ]; then
         echo "PASSED"
     else
@@ -64,7 +64,7 @@ echo "" >> $LOG
 echo "$HOSTNAME:~ # docker --version" >> $LOG
 docker --version >> $LOG
 echo "test #4 Check Docker version..."
-check_version
+check_version "$@"
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # ip a s" >> $LOG
