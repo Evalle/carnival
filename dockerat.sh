@@ -1,6 +1,8 @@
 #!/bin/bash
-# v 0.9
+# v 1.0
 # =======
+# Docker auto testing
+#########################
 # There are four important things:
 # 1) you need to have root privilegies to run this script;
 # 2) this script is only testing basic Docker functionality on your system;
@@ -26,7 +28,7 @@ check() {
 }
 
 check_version() {
-    if [ "$1" == "{$VOUTPUT}" ]; then
+    if [ "$1" == "${VOUTPUT}" ]; then
         echo "PASSED"
     else
         echo "FAILED"
@@ -35,7 +37,7 @@ check_version() {
 }
  
 
-echo "dockerat.sh is now testing Docker on your system, you can find your results in '$LOG' file. Please, be patient..."
+echo "dockerat.sh is now testing Docker on your system, you can find all results in '$LOG' file. Please, be patient..."
 
 echo "Docker testing on '$HOSTNAME' host" > $LOG
 echo "" >> $LOG
@@ -43,21 +45,21 @@ echo "" >> $LOG
 echo "" >> $LOG
 echo "$HOSTNAME:~ # systemctl start docker" >> $LOG
 systemctl start docker >> $LOG
-echo "test #1 Trying to start Docker on our system..."
+echo "test #1 Trying to start Docker on your system..."
 check
 
 sleep 2
 echo "" >> $LOG
 echo "$HOSTNAME:~ # systemctl status docker" >> $LOG
 systemctl status docker >> $LOG
-echo "test #2 Check status of Docker on our system..."
+echo "test #2 Check status of Docker on your system..."
 check
 
 sleep 2
 echo "" >> $LOG
 echo "$HOSTNAME:~ # systemctl restart docker" >> $LOG
 systemctl restart docker >> $LOG
-echo "test #3 Check that we can restart Docker on our system..."
+echo "test #3 Check that we can restart Docker on your system..."
 check
 
 echo "" >> $LOG
@@ -69,7 +71,7 @@ check_version "$@"
 echo "" >> $LOG
 echo "$HOSTNAME:~ # ip a s" >> $LOG
 ip a s | grep -i docker >> $LOG
-echo "test #5 Check that we have docker network interface on our system..."
+echo "test #5 Check that we have docker network interface on your system..."
 check 
 
 echo "" >> $LOG
@@ -106,13 +108,13 @@ check
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker ps -a" >> $LOG
 docker ps -a >> $LOG
-echo "test #11 Check that we can see the list of all docker containers on our system..."
+echo "test #11 Check that we can see the list of all docker containers on your system..."
 check
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker images " >> $LOG
 docker images >> $LOG
-echo "test #12 Check that we can see the list of all docker images on our system..."
+echo "test #12 Check that we can see the list of all docker images on your system..."
 check
 
 echo "" >> $LOG
@@ -125,7 +127,7 @@ echo ""
 if [ $ERRORS -eq 0 ]; then
 echo "All Tests are PASSED, check your results in '$LOG' file"
     else
-echo "One of the tests is FAILED, please check '$LOG' for additional information"
+echo "One (or more) tests is FAILED, please check '$LOG' for additional information"
     fi
 
 echo "" 
