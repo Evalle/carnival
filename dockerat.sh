@@ -16,7 +16,14 @@ ERRORS=0
 VOUTPUT="$(docker --version)"
 
 # All your results in the $LOG you can change it and give specific name to it if you want to below:
-LOG='log'
+
+# we need to have some kind of counter here instead of just '2.log' file
+
+if [ -f '1.log' ]; then
+    LOG='2.log'
+else
+    LOG='1.log'
+fi
 
 # function that checking status of your command
 check() {
