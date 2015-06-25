@@ -1,2 +1,1 @@
-1) fix issue with $VERSION variable ==>>>DONE (v 1.0)
-2) fix docker rm -f output
+Version 1.0

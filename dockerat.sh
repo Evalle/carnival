@@ -4,10 +4,10 @@
 # Docker auto testing script aka docke_rat
 ############################################
 # There are five important things:
-# 1) you need to have root privilegies to run this script;
+# 1) you need to have a root privilegies to run this script;
 # 2) this scripts accepts one input argument value - output of the `docker --version` command. (e.g. sudo ./dockerat.sh "Docker version 1.6.2, build 7c8fca2")
 # 3) this script is only testing basic Docker functionality on your system;
-# 4) you can find all your results in the log file (see $LOG variable);
+# 4) you can find all your results in the .log file (see $LOG variable);
 # 5) have a lot of fun!
 
 ERRORS=0
