@@ -13,7 +13,7 @@
 ERRORS=0
 
 #docker version variable:
-VOUTPUT="$(docker --version)"
+VERSION="$(docker --version)"
 
 LOG=$(date +"%Y%m%d%H%M".log)
 
@@ -28,7 +28,7 @@ check() {
 }
 
 check_version() {
-    if [ "$1" == "${VOUTPUT}" ]; then
+    if [ "$1" == "${VERSION}" ]; then
         echo "PASSED"
     else
         echo "FAILED"
