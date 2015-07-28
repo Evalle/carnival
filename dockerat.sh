@@ -1,7 +1,10 @@
 #!/bin/bash
-# v 1.0
-# =======
-# Docker auto testing script aka docke_rat
+#: Title        : docke_rat
+#: Date         : 28.07.2015
+#: Author       : "Evgeny Shmarnev" <shmarnev@gmail.com>
+#: Version      : 1.0
+#: Description  : docke_rat was created for automate process of docker testing
+#: Options      : `docker --version`
 ############################################
 # There are five important things:
 # 1) you need to have a root privilegies to run this script;
