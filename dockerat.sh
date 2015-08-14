@@ -1,15 +1,15 @@
 #!/bin/bash
 #: Title        : docke_rat
-#: Date         : 28.07.2015
+#: Date         : 14.08.2015
 #: Author       : "Evgeny Shmarnev" <shmarnev@gmail.com>
-#: Version      : 1.0
+#: Version      : 1.1
 #: Description  : docke_rat was created for automate process of docker testing
 #: Options      : `docker --version`
 ############################################
 # There are five important things:
-# 1) you need to have a root privilegies to run this script;
-# 2) this scripts accepts one input argument value - output of the `docker --version` command. (e.g. sudo ./dockerat.sh "Docker version 1.6.2, build 7c8fca2")
-# 3) this script is only testing basic Docker functionality on your system;
+# 1) you need to be a root to run this script;
+# 2) this script accepts one argument  - version of the docker package (e.g. `docker --version` command)
+# 3) this script is for basic testing only!;
 # 4) you can find all your results in the .log file (see $LOG variable);
 # 5) have a lot of fun!
 
@@ -72,7 +72,7 @@ echo "test #4 Check Docker version..."
 check_version "$@"
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # ip a s" >> $LOG
+echo "$HOSTNAME:~ # ip a s | grep -i docker" >> $LOG
 ip a s | grep -i docker >> $LOG
 echo "test #5 Check that we have docker network interface on your system..."
 check 
