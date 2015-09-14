@@ -85,27 +85,27 @@ check
 sleep 1
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run ubuntu uname -r" >> $LOG
-docker run ubuntu uname -r &>> $LOG
-echo "test #7 Check that we can start a new docker container via 'docker run ubuntu uname -r'"
+echo "$HOSTNAME:~ # docker run opensuse uname -r" >> $LOG
+docker run opensuse uname -r &>> $LOG
+echo "test #7 Check that we can start a new docker container via 'docker run opensuse uname -r'"
 check 
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run ubuntu echo 'Hello world!'" >> $LOG
-docker run ubuntu echo 'Hello world!' >> $LOG
-echo "test #8 Check that we can start a new docker container via 'docker run ubuntu echo 'Hello world!'"
+echo "$HOSTNAME:~ # docker run opensuse echo 'Hello world!'" >> $LOG
+docker run opensuse echo 'Hello world!' >> $LOG
+echo "test #8 Check that we can start a new docker container via 'docker run opensuse echo 'Hello world!'"
 check 
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run ubuntu df -h " >> $LOG
-docker run ubuntu df -h >> $LOG
-echo "test #9 Check that we can start a new docker container via 'docker run ubuntu df -h'..."
+echo "$HOSTNAME:~ # docker run opensuse df -h " >> $LOG
+docker run opensuse df -h >> $LOG
+echo "test #9 Check that we can start a new docker container via 'docker run opensuse df -h'..."
 check 
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run ubuntu mount" >> $LOG
-docker run ubuntu mount >> $LOG
-echo "test #10 Check that we can start a new docker container via 'docker run ubuntu mount'..."
+echo "$HOSTNAME:~ # docker run opensuse mount" >> $LOG
+docker run opensuse mount >> $LOG
+echo "test #10 Check that we can start a new docker container via 'docker run opensuse mount'..."
 check
 
 echo "" >> $LOG
