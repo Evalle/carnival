@@ -20,6 +20,8 @@ VERSION="$(docker --version)"
 
 LOG=$(date +"%Y%m%d%H%M".log)
 
+IMAGENAME='opensuse'
+
 # function that checking status of your command
 check() {
     if [ $? -eq 0 ]; then
@@ -85,27 +87,27 @@ check
 sleep 1
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run opensuse uname -r" >> $LOG
-docker run opensuse uname -r &>> $LOG
-echo "test #7 Check that we can start a new docker container via 'docker run opensuse uname -r'"
+echo "$HOSTNAME:~ # docker run $IMAGENAME uname -r" >> $LOG
+docker run $IMAGENAME uname -r &>> $LOG
+echo "test #7 Check that we can start a new docker container via 'docker run $IMAGENAME uname -r'"
 check 
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run opensuse echo 'Hello world!'" >> $LOG
-docker run opensuse echo 'Hello world!' >> $LOG
-echo "test #8 Check that we can start a new docker container via 'docker run opensuse echo 'Hello world!'"
+echo "$HOSTNAME:~ # docker run $IMAGENAME echo 'Hello world!'" >> $LOG
+docker run $IMAGENAME echo 'Hello world!' >> $LOG
+echo "test #8 Check that we can start a new docker container via 'docker run $IMAGENAME echo 'Hello world!'"
 check 
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run opensuse df -h " >> $LOG
-docker run opensuse df -h >> $LOG
-echo "test #9 Check that we can start a new docker container via 'docker run opensuse df -h'..."
+echo "$HOSTNAME:~ # docker run $IMAGENAME df -h " >> $LOG
+docker run $IMAGENAME df -h >> $LOG
+echo "test #9 Check that we can start a new docker container via 'docker run $IMAGENAME df -h'..."
 check 
 
 echo "" >> $LOG
-echo "$HOSTNAME:~ # docker run opensuse mount" >> $LOG
-docker run opensuse mount >> $LOG
-echo "test #10 Check that we can start a new docker container via 'docker run opensuse mount'..."
+echo "$HOSTNAME:~ # docker run $IMAGENAME mount" >> $LOG
+docker run $IMAGENAME mount >> $LOG
+echo "test #10 Check that we can start a new docker container via 'docker run $IMAGENAME mount'..."
 check
 
 echo "" >> $LOG
