@@ -79,6 +79,8 @@ ip a s | grep -i docker >> $LOG
 echo "test #5 Check that we have docker network interface on your system..."
 check 
 
+sleep 2
+
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker ps" >> $LOG
 docker ps >> $LOG
