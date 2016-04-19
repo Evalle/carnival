@@ -1,9 +1,9 @@
 #!/bin/bash
-#: Title        : docke_rat
+#: Title        : carnival
 #: Date         : 14.08.2015
 #: Author       : "Evgeny Shmarnev" <shmarnev@gmail.com>
 #: Version      : 1.1
-#: Description  : docke_rat was created for automate process of docker testing
+#: Description  : carnival was created for automate process of docker testing
 #: Options      : `docker --version`
 ############################################
 # There are five important things:
