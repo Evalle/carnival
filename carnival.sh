@@ -1,14 +1,14 @@
 #!/bin/bash
 #: Title        : carnival
-#: Date         : 14.08.2015
+#: Date         : 23.04.2016
 #: Author       : "Evgeny Shmarnev" <shmarnev@gmail.com>
-#: Version      : 1.1
+#: Version      : 1.2
 #: Description  : carnival was created for automate process of docker testing
 #: Options      : `docker --version`
 ############################################
 # There are five important things:
-# 1) you need to be a root to run this script;
-# 2) this script accepts one argument  - version of the docker package (e.g. `docker --version` command)
+# 1) you need to be root to run this script;
+# 2) this script accepts one argument - name of the image that you want to test under docker (see docker images)
 # 3) this script is for basic testing only!;
 # 4) you can find all your results in the .log file (see $LOG variable);
 # 5) have a lot of fun!
@@ -32,17 +32,7 @@ check() {
     fi
 }
 
-check_version() {
-    if [ "$1" == "${VERSION}" ]; then
-        echo "PASSED"
-    else
-        echo "FAILED"
-        ERRORS=$[$ERRORS+1]     
-    fi
-}
- 
-
-echo "dockerat.sh is now testing Docker on your system, you can find all results in '$LOG' file. Please, be patient..."
+echo "carnival is now testing Docker on your system, you can find all results in '$LOG' file. Please, be patient..."
 
 echo "Docker testing on '$HOSTNAME' host" > $LOG
 echo "" >> $LOG
