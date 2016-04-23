@@ -20,7 +20,7 @@ VERSION="$(docker --version)"
 
 LOG=$(date +"%Y%m%d%H%M".log)
 
-IMAGENAME='opensuse'
+IMAGENAME=$1
 
 # function that checking status of your command
 check() {
@@ -56,12 +56,6 @@ echo "$HOSTNAME:~ # systemctl restart docker" >> $LOG
 systemctl restart docker >> $LOG
 echo "test #3 Check that we can restart Docker on your system..."
 check
-
-echo "" >> $LOG
-echo "$HOSTNAME:~ # docker --version" >> $LOG
-docker --version >> $LOG
-echo "test #4 Check Docker version..."
-check_version "$@"
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # ip a s | grep -i docker" >> $LOG
