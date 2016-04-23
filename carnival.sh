@@ -2,7 +2,7 @@
 #: Title        : carnival
 #: Date         : 23.04.2016
 #: Author       : "Evgeny Shmarnev" <shmarnev@gmail.com>
-#: Version      : 1.2
+#: Version      : 1.3
 #: Description  : carnival was created for automate process of docker testing
 #: Options      : `docker --version`
 ############################################
@@ -13,10 +13,12 @@
 # 4) you can find all your results in the .log file (see $LOG variable);
 # 5) have a lot of fun!
 
-ERRORS=0
+#Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
-#docker version variable:
-VERSION="$(docker --version)"
+ERRORS=0
 
 LOG=$(date +"%Y%m%d%H%M".log)
 
@@ -25,9 +27,9 @@ IMAGENAME=$1
 # function that checking status of your command
 check() {
     if [ $? -eq 0 ]; then
-        echo "PASSED"
+        printf "${GREEN}PASSED${NC}\n"
     else
-        echo "FAILED"
+        printf "${RED}FAILED${NC}\n"
         ERRORS=$[$ERRORS+1]     
     fi
 }
