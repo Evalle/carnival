@@ -1,8 +1,8 @@
 #!/bin/bash
 #: Title        : carnival
-#: Date         : 23.04.2016
+#: Date         : 26.04.2016
 #: Author       : "Evgeny Shmarnev" <shmarnev@gmail.com>
-#: Version      : 1.3
+#: Version      : 1.31
 #: Description  : carnival was created for automate process of docker testing
 #: Options      : `docker --version`
 ############################################
@@ -62,7 +62,7 @@ check
 echo "" >> $LOG
 echo "$HOSTNAME:~ # ip a s | grep -i docker" >> $LOG
 ip a s | grep -i docker >> $LOG
-echo "test #5 Check that we have docker network interface on your system..."
+echo "test #4 Check that we have docker network interface on your system..."
 check 
 
 sleep 2
@@ -70,57 +70,57 @@ sleep 2
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker ps" >> $LOG
 docker ps >> $LOG
-echo "test #6 Check the list of running docker containers..."
+echo "test #5 Check the list of running docker containers..."
 check
 sleep 1
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker run $IMAGENAME uname -r" >> $LOG
 docker run $IMAGENAME uname -r &>> $LOG
-echo "test #7 Check that we can start a new docker container via 'docker run $IMAGENAME uname -r'"
+echo "test #6 Check that we can start a new docker container via 'docker run $IMAGENAME uname -r'"
 check 
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker run $IMAGENAME echo 'Hello world!'" >> $LOG
 docker run $IMAGENAME echo 'Hello world!' >> $LOG
-echo "test #8 Check that we can start a new docker container via 'docker run $IMAGENAME echo 'Hello world!'"
+echo "test #7 Check that we can start a new docker container via 'docker run $IMAGENAME echo 'Hello world!'"
 check 
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker run $IMAGENAME df -h " >> $LOG
 docker run $IMAGENAME df -h >> $LOG
-echo "test #9 Check that we can start a new docker container via 'docker run $IMAGENAME df -h'..."
+echo "test #8 Check that we can start a new docker container via 'docker run $IMAGENAME df -h'..."
 check 
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker run $IMAGENAME mount" >> $LOG
 docker run $IMAGENAME mount >> $LOG
-echo "test #10 Check that we can start a new docker container via 'docker run $IMAGENAME mount'..."
+echo "test #9 Check that we can start a new docker container via 'docker run $IMAGENAME mount'..."
 check
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker ps -a" >> $LOG
 docker ps -a >> $LOG
-echo "test #11 Check that we can see the list of all docker containers on your system..."
+echo "test #10 Check that we can see the list of all docker containers on your system..."
 check
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker images " >> $LOG
 docker images >> $LOG
-echo "test #12 Check that we can see the list of all docker images on your system..."
+echo "test #11 Check that we can see the list of all docker images on your system..."
 check
 
 echo "" >> $LOG
 echo "$HOSTNAME:~ # docker info" >> $LOG
 docker info >> $LOG
-echo "test #13 Check docker info..."
+echo "test #12 Check docker info..."
 check
 
 echo ""
 if [ $ERRORS -eq 0 ]; then
-echo "All Tests are PASSED, check your results in '$LOG' file"
+echo "All Tests are ${GREEN}PASSED${NC}\n, check your results in '$LOG' file"
     else
-echo "One (or more) test is FAILED, please check '$LOG' for additional information"
+echo "One (or more) test is ${RED}FAILED${NC}\n, please check '$LOG' for additional information"
     fi
 
 echo "" 
